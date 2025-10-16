@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bulk WhatsApp QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0d8050;
+    }
+
+    .qr-block {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .qr-block h2 {
+      margin-top: 0;
+      color: #0d8050;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #0d8050;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    button:hover {
+      background-color: #0b6942;
+    }
+
+    .controls {
+      margin-top: 10px;
+    }
+
+    .qr-output {
+      margin-top: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+
+    p.noteimdev {
+    font-size: 10px !important;
+    color: #ddd;
+}
+
+
+.noteim {
+    color: #999797;
+    text-align: center;
+    font-size: 20px !important;
+}
+
+
+
+ .note-box {
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: system-ui, sans-serif;
+  }
+
+  .note-box label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+  }
+
+  .note-box textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 14px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: vertical;
+    background-color: #fefefe;
+    color: #222;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .note-box textarea:focus {
+    border-color: #2b8aef;
+    box-shadow: 0 0 0 3px rgba(43, 138, 239, 0.2);
+    outline: none;
+    background-color: #fff;
+  }
+
+  .note-box textarea::placeholder {
+    color: #aaa;
+  }
+
+  </style>
+</head>
+<body>
+
+
+    
+    
+  
+  <h1>LAICAI K Group</h1>
+  <h1 class="noteim">Generate Multiple WhatsApp QR Codes</h1>
+  
+
+  <div class="grid">
+    <!-- Create 5 blocks -->
+    <div class="qr-block" id="block1">
+      <h2>QR Code 1</h2>
+      <input type="text" id="phone1" placeholder="Enter phone number (e.g. 15551234567)" />
+      <textarea id="message1" rows="2" placeholder="Enter message (optional)"></textarea>
+      <div class="controls">
+        <button onclick="generateQR(1)">Generate</button>
+        <button onclick="downloadQR(1)">Download</button>
+      </div>
+      <div class="qr-output" id="qrcode1"></div>
+    </div>
+
+    <div class="qr-block" id="block2">
+      <h2>QR Code 2</h2>
+      <input type="text" id="phone2" placeholder="Enter phone number (e.g. 15551234567)" />
+      <textarea id="message2" rows="2" placeholder="Enter message (optional)"></textarea>
+      <div class="controls">
+        <button onclick="generateQR(2)">Generate</button>
+        <button onclick="downloadQR(2)">Download</button>
+      </div>
+      <div class="qr-output" id="qrcode2"></div>
+    </div>
+
+    <div class="qr-block" id="block3">
+      <h2>QR Code 3</h2>
+      <input type="text" id="phone3" placeholder="Enter phone number (e.g. 15551234567)" />
+      <textarea id="message3" rows="2" placeholder="Enter message (optional)"></textarea>
+      <div class="controls">
+        <button onclick="generateQR(3)">Generate</button>
+        <button onclick="downloadQR(3)">Download</button>
+      </div>
+      <div class="qr-output" id="qrcode3"></div>
+    </div>
+
+    <div class="qr-block" id="block4">
+      <h2>QR Code 4</h2>
+      <input type="text" id="phone4" placeholder="Enter phone number (e.g. 15551234567)" />
+      <textarea id="message4" rows="2" placeholder="Enter message (optional)"></textarea>
+      <div class="controls">
+        <button onclick="generateQR(4)">Generate</button>
+        <button onclick="downloadQR(4)">Download</button>
+      </div>
+      <div class="qr-output" id="qrcode4"></div>
+    </div>
+
+    <div class="qr-block" id="block5">
+      <h2>QR Code 5</h2>
+      <input type="text" id="phone5" placeholder="Enter phone number (e.g. 15551234567)" />
+      <textarea id="message5" rows="2" placeholder="Enter message (optional)"></textarea>
+      <div class="controls">
+        <button onclick="generateQR(5)">Generate</button>
+        <button onclick="downloadQR(5)">Download</button>
+      </div>
+      <div class="qr-output" id="qrcode5"></div>
+    </div>
+  </div>
+
+
+<div class="textareanote">
+    <div class="note-box">
+  <label for="notes">Your Notes</label>
+  <textarea id="notes" placeholder="Write anything here..."></textarea>
+</div>
+</div>
+  <div class="note">
+    <p class="noteim">"If you need any help ~ contact with IT"</p>
+    <p class="noteimdev">"Develop by Luchifer"</p>
+
+  </div>
+  <!-- QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    const qrCodes = {}; // store QRCode instances
+
+    function generateQR(index) {
+      const phone = document.getElementById(`phone${index}`).value.trim().replace(/[^0-9]/g, '');
+      const message = document.getElementById(`message${index}`).value.trim();
+      const qrContainer = document.getElementById(`qrcode${index}`);
+
+      if (!phone) {
+        alert(`Phone number missing for QR ${index}`);
+        return;
+      }
+
+      const url = `https://wa.me/${phone}${message ? '?text=' + encodeURIComponent(message) : ''}`;
+
+      // Clear previous
+      qrContainer.innerHTML = '';
+
+      // Generate QR
+      qrCodes[index] = new QRCode(qrContainer, {
+        text: url,
+        width: 220,
+        height: 220,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function downloadQR(index) {
+      const qrContainer = document.getElementById(`qrcode${index}`);
+      if (!qrContainer.querySelector('canvas')) {
+        alert(`Please generate QR ${index} first`);
+        return;
+      }
+
+      const canvas = qrContainer.querySelector('canvas');
+      const dataURL = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = dataURL;
+      link.download = `whatsapp_qr_${index}.png`;
+      link.click();
+    }
+  </script>
+</body>
+</html>
